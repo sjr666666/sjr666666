@@ -128,7 +128,8 @@ def collect(user: str):
             "number": it["number"], "title": title, "status": status,
             "created": pr.get("created_at"), "merged_at": merged_at,
             "date": created.astimezone(TZ8).strftime("%Y-%m-%d") if created else "",
-            "merged_date": parse_ts(merged_at).astimezone(TZ8).strftime("%Y-%m-%d") if merged_at else "",
+            "merged_date": parse_ts(merged_at).astimezone(TZ8).strftime("%m-%d") if merged_at else "",
+            "merged_year": parse_ts(merged_at).astimezone(TZ8).strftime("%Y") if merged_at else "",
             "additions": pr.get("additions") or 0,
             "deletions": pr.get("deletions") or 0,
             "changed_files": pr.get("changed_files") or 0,
@@ -233,17 +234,17 @@ def card_merged(prs: list[dict]) -> str:
 
     body: list[str] = []
     body.append(f'<circle cx="{L + 4}" cy="49" r="3" fill="{C["accent"]}"/>')
-    body.append(tx(L + 15, 53, "MERGED PULL REQUESTS", 11, C["accent"], "700", ls="2.4"))
-    body.append(tx(R, 53, f"github.com/{USER}", 11, C["text3"], "normal", "end", MONO))
+    body.append(tx(L + 15, 53, "MERGED PULL REQUESTS", 12, C["accent"], "700", ls="2.4"))
+    body.append(tx(R, 53, f"github.com/{USER}", 11.5, C["text3"], "normal", "end", MONO))
 
     # 焦点数字
     n = str(len(merged))
-    body.append(tx(L - 4, 138, n, 76, C["text"], "700", family=MONO, ls="-3"))
-    body.append(tx(L + 46 * len(n) + 18, 138, "个 PR 已被合并", 17, C["text2"], "600", ls="-0.2"))
+    body.append(tx(L - 4, 142, n, 82, C["text"], "700", family=MONO, ls="-3"))
+    body.append(tx(L + 50 * len(n) + 18, 142, "个 PR 已被合并", 18, C["text2"], "600", ls="-0.2"))
     sub = (f"{len(upstream)} 个提给他人仓库 · {len(own)} 个自有项目"
            + (f" · 中位交付 {fmt_dur(median)}" if median else ""))
-    body.append(tx(L, 164, sub, 12.5, C["text3"]))
-    body.append(hairline(L, 192, R))
+    body.append(tx(L, 170, sub, 13, C["text3"]))
+    body.append(hairline(L, 196, R))
 
     # 上游分组明细
     y, bottom = 220, 220
@@ -251,25 +252,25 @@ def card_merged(prs: list[dict]) -> str:
         g_add = sum(p["additions"] for p in items)
         g_del = sum(p["deletions"] for p in items)
         g_files = sum(p["changed_files"] for p in items)
-        body.append(tx(L, y, repo.upper(), 12.5, C["text"], "700", family=MONO, ls="0.6"))
+        body.append(tx(L, y, repo.upper(), 13.5, C["text"], "700", family=MONO, ls="0.6"))
         body.append(tx(R, y, f"{len(items)} 个 PR · +{fmt_int(g_add)} / −{fmt_int(g_del)} 行 · {g_files} 文件",
-                        11.5, C["text3"], "normal", "end", MONO))
+                        12, C["text3"], "normal", "end", MONO))
         theme = common_theme(items)
         if theme:
-            body.append(tx(L, y + 19, f"共同主题：{theme} · {len(items)} 个相关联的 PR",
-                            11.5, C["text3"]))
-        first = y + 38
+            body.append(tx(L, y + 21, f"共同主题：{theme} · {len(items)} 个相关联的 PR",
+                            12, C["text3"]))
+        first = y + 44
         for i, p in enumerate(sorted(items, key=lambda x: x["number"])):
-            rb = first + i * 26
-            body.append(tx(L + 2, rb, f"#{p['number']}", 11, C["text3"], "normal", "start", MONO))
-            body.append(tx(L + 48, rb, cut(p["title"], 74), 12.5, C["text2"]))
-            body.append(tx(R, rb, f"+{fmt_int(p['additions'])}", 12.5, C["merged"], "600", "end", MONO))
+            rb = first + i * 28
+            body.append(tx(L + 2, rb, f"#{p['number']}", 12, C["text3"], "normal", "start", MONO))
+            body.append(tx(L + 48, rb, cut(p["title"], 72), 13.5, C["text2"]))
+            body.append(tx(R, rb, f"+{fmt_int(p['additions'])}", 13.5, C["merged"], "600", "end", MONO))
             bottom = rb
-        y = first + (len(items) - 1) * 26 + 30
+        y = first + (len(items) - 1) * 28 + 32
 
     if len(groups) > len(shown):
         rest = len(groups) - len(shown)
-        body.append(tx(L, y, f"另有 {rest} 个他人仓库的合并 PR，见下表", 11.5, C["text3"]))
+        body.append(tx(L, y, f"另有 {rest} 个他人仓库的合并 PR，见下表", 12, C["text3"]))
         bottom = y
 
     H = int(bottom + 26 + 44)
@@ -294,8 +295,8 @@ def card_merged(prs: list[dict]) -> str:
             f'<rect x="0" y="0" width="{W}" height="3" rx="1.5" fill="url(#topbar)"/>']
 
     tail = [hairline(L, H - 42, R),
-            tx(L, H - 19, "数据来源 GitHub REST API · 每日自动刷新", 11, C["text3"]),
-            tx(R, H - 19, f"更新于 {stamp}", 11, C["text3"], "normal", "end", MONO),
+            tx(L, H - 19, "数据来源 GitHub REST API · 每日自动刷新", 11.5, C["text3"]),
+            tx(R, H - 19, f"更新于 {stamp}", 11.5, C["text3"], "normal", "end", MONO),
             '</svg>']
 
     return "\n".join(head + body + tail) + "\n"
@@ -328,7 +329,10 @@ def sync(md: str, prs: list[dict]) -> str:
     md = re.sub(r"(badge/Merged%20PRs-)\d+(-)", rf"\g<1>{len(merged)}\g<2>", md)
     md = re.sub(r"(badge/Upstream%20repos-)\d+(-)", rf"\g<1>{n_all_repo}\g<2>", md)
 
-    lines = [f"<!-- STATS:BEGIN -->", f"**{len(merged)}** 个 PR 已被合并", ""]
+    years = sorted({p["merged_year"] for p in merged if p.get("merged_year")})
+    yr = years[0] if len(years) == 1 else (f"{years[0]}–{years[-1]}" if years else "")
+    lines = ["<!-- STATS:BEGIN -->",
+             f"**{len(merged)}** 个 PR 已被合并" + (f"（{yr} 年）" if yr else ""), ""]
     if up:
         links = "、".join(f"[`{r}`](https://github.com/{r})" for r in up_repos)
         lines.append(
