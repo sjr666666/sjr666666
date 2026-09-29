@@ -107,7 +107,7 @@ pie showData
 | [sjr666666/ai-elderly-health-assistant](https://github.com/sjr666666/ai-elderly-health-assistant) | [#2](https://github.com/sjr666666/ai-elderly-health-assistant/pull/2) | Codex/publish project | +32,520 −7,445 | 219 | 22 分 | 已合并 | 2026-08-03 |
 | [sjr666666/ai-elderly-health-assistant](https://github.com/sjr666666/ai-elderly-health-assistant) | [#1](https://github.com/sjr666666/ai-elderly-health-assistant/pull/1) | [codex] harden and document medication manager | +507 −561 | 29 | 1.3 时 | 已合并 | 2026-08-01 |
 
-<sub>最后更新 2026-09-29 15:34 UTC · 由 `scripts/generate_stats.py` 自动生成</sub>
+<sub>最后更新 2026-09-29 15:36 UTC · 由 `scripts/generate_stats.py` 自动生成</sub>
 <!-- STATS:END -->
 
 ---
