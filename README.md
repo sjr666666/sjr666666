@@ -32,39 +32,36 @@
 
 ## 🔬 贡献画像
 
+<!-- PORTRAIT:BEGIN -->
 <table>
 <tr><td width="50%" valign="top">
 
 **我最常做的事是「修边界」**
 
-在 16 个 PR 里，`fix` 与 `feat` 各占 5 个。`fix` 集中在三类高频区：
-参数校验的静默失败、并发读改写丢数据、跨平台（Windows / 容器）行为不一致。
+在 16 个 PR 里，`fix` 5 个、`feat` 5 个。`fix` 集中在三类高频区：参数校验的静默失败、并发读改写丢数据、跨平台（Windows / 容器）行为不一致。
 
 </td><td width="50%" valign="top">
 
 **小步提交，便于审查与回滚**
 
-变更规模主要落在 S 档（20–100 行），多数 PR 只碰 2–3 个文件。
-唯一的大体积提交是自有项目的工程化上线 PR。
+变更规模落在 S 档（20–100 行）的有 6 个；8 个 PR 只碰不超过 3 个文件。单笔最大变更来自 `ai-elderly-health-assistant #2`（219 个文件、40k 行）。
 
 </td></tr>
 <tr><td valign="top">
 
 **向上游提出，而不是只写自己的仓库**
 
-16 个 PR 中有 13 个提给非本人仓库，覆盖 Agent 运行时、前端框架、
-测试框架与企业级工具链，其中 6 个是万星以上项目。
+16 个 PR 中有 13 个提给非本人仓库，覆盖 Agent 运行时、前端框架、测试框架与企业级工具链，其中 6 个是万星以上项目。
 
 </td><td valign="top">
 
 **按仓库的贡献分布**
 
-`helsome/folio` 4 · `ai-elderly-health-assistant` 3 · `bytedance/deer-flow` 3 ·
-`huggingface/smolagents` / `vitest-dev/vitest` / `excalidraw` /
-`modelcontextprotocol/typescript-sdk` / `freeCodeCamp` / `Snailclimb/interview-guide` 各 1
+`folio` 4 · `deer-flow` 3 · `ai-elderly-health-assistant` 3 · `interview-guide` 1 · `excalidraw` 1 · `freeCodeCamp` 1 · `smolagents` 1 · `typescript-sdk` 1 · `vitest` 1
 
 </td></tr>
 </table>
+<!-- PORTRAIT:END -->
 
 ---
 
@@ -107,7 +104,7 @@ pie showData
 | [sjr666666/ai-elderly-health-assistant](https://github.com/sjr666666/ai-elderly-health-assistant) | [#2](https://github.com/sjr666666/ai-elderly-health-assistant/pull/2) | Codex/publish project | +32,520 −7,445 | 219 | 22 分 | 已合并 | 2026-08-03 |
 | [sjr666666/ai-elderly-health-assistant](https://github.com/sjr666666/ai-elderly-health-assistant) | [#1](https://github.com/sjr666666/ai-elderly-health-assistant/pull/1) | [codex] harden and document medication manager | +507 −561 | 29 | 1.3 时 | 已合并 | 2026-08-01 |
 
-<sub>最后更新 2026-09-29 15:36 UTC · 由 `scripts/generate_stats.py` 自动生成</sub>
+<sub>最后更新 2026-09-29 15:41 UTC · 由 `scripts/generate_stats.py` 自动生成</sub>
 <!-- STATS:END -->
 
 ---

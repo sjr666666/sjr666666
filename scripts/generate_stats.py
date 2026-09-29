@@ -461,6 +461,62 @@ def pr_table(prs: list[dict]) -> str:
     return "\n".join(rows)
 
 
+def portrait(prs: list[dict]) -> str:
+    """自动生成的「贡献画像」区块 —— 所有数字均由数据推导，避免手工维护后与卡片打架。"""
+    total = len(prs)
+    merged = sum(1 for p in prs if p["status"] == "merged")
+    open_ = sum(1 for p in prs if p["status"] == "open")
+    upstream = [p for p in prs if p["repo"].split("/")[0] != USER]
+    big = len({p["repo"] for p in prs if p["stars"] >= 10000})
+    fix = sum(1 for p in prs if p["type"] == "fix")
+    feat = sum(1 for p in prs if p["type"] == "feat")
+    s_bucket = sum(1 for p in prs
+                   if 20 <= p["additions"] + p["deletions"] < 100)
+    small_files = sum(1 for p in prs if p["changed_files"] <= 3)
+    biggest = max(prs, key=lambda p: p["additions"] + p["deletions"])
+
+    agg: dict[str, int] = {}
+    for p in prs:
+        agg[p["repo"]] = agg.get(p["repo"], 0) + 1
+    top = sorted(agg.items(), key=lambda kv: (-kv[1], kv[0]))
+    dist = " · ".join(f"`{r.split('/')[1]}` {n}" for r, n in top)
+
+    return (
+        "<!-- PORTRAIT:BEGIN -->\n"
+        "<table>\n"
+        '<tr><td width="50%" valign="top">\n\n'
+        f"**我最常做的事是「修边界」**\n\n"
+        f"在 {total} 个 PR 里，`fix` {fix} 个、`feat` {feat} 个。`fix` 集中在三类高频区："
+        f"参数校验的静默失败、并发读改写丢数据、跨平台（Windows / 容器）行为不一致。\n\n"
+        "</td><td width=\"50%\" valign=\"top\">\n\n"
+        f"**小步提交，便于审查与回滚**\n\n"
+        f"变更规模落在 S 档（20–100 行）的有 {s_bucket} 个；{small_files} 个 PR 只碰不超过 3 个文件。"
+        f"单笔最大变更来自 `{biggest['repo'].split('/')[1]} #{biggest['number']}`"
+        f"（{biggest['changed_files']} 个文件、{fmt_compact(biggest['additions'] + biggest['deletions'])} 行）。\n\n"
+        "</td></tr>\n"
+        '<tr><td valign="top">\n\n'
+        f"**向上游提出，而不是只写自己的仓库**\n\n"
+        f"{total} 个 PR 中有 {len(upstream)} 个提给非本人仓库，覆盖 Agent 运行时、前端框架、"
+        f"测试框架与企业级工具链，其中 {big} 个是万星以上项目。\n\n"
+        "</td><td valign=\"top\">\n\n"
+        f"**按仓库的贡献分布**\n\n{dist}\n\n"
+        "</td></tr>\n"
+        "</table>\n"
+        "<!-- PORTRAIT:END -->"
+    )
+
+
+def sync_badges(md: str, prs: list[dict]) -> str:
+    """同步顶部 shields.io 徽章里的数字，避免与卡片/表格不一致。"""
+    total = len(prs)
+    merged = sum(1 for p in prs if p["status"] == "merged")
+    nrepo = len({p["repo"] for p in prs})
+    md = re.sub(r"(Pull%20Requests-)\d+(-)", rf"\g<1>{total}\g<2>", md)
+    md = re.sub(r"(badge/Merged-)\d+(-)", rf"\g<1>{merged}\g<2>", md)
+    md = re.sub(r"(Upstream%20Repos-)\d+(-)", rf"\g<1>{nrepo}\g<2>", md)
+    return md
+
+
 def inject_readme(prs: list[dict]) -> None:
     if not README.exists():
         return
@@ -474,9 +530,15 @@ def inject_readme(prs: list[dict]) -> None:
              f"{tbl}\n\n"
              f"<sub>最后更新 {stamp} · 由 `scripts/generate_stats.py` 自动生成</sub>\n"
              f"<!-- STATS:END -->")
-    new = re.sub(r"<!-- STATS:BEGIN -->.*?<!-- STATS:END -->", block, md, flags=re.S)
-    README.write_text(new, encoding="utf-8")
-    print("  README.md 统计区间已更新")
+    md = re.sub(r"<!-- STATS:BEGIN -->.*?<!-- STATS:END -->", block, md, flags=re.S)
+
+    if "<!-- PORTRAIT:BEGIN -->" in md:
+        md = re.sub(r"<!-- PORTRAIT:BEGIN -->.*?<!-- PORTRAIT:END -->",
+                    portrait(prs), md, flags=re.S)
+    md = sync_badges(md, prs)
+
+    README.write_text(md, encoding="utf-8")
+    print("  README.md 统计区间 / 画像 / 徽章已更新")
 
 
 # ---------------------------------------------------------------- main
