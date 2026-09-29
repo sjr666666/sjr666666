@@ -31,7 +31,7 @@
 | [`ai-elderly-health-assistant`](https://github.com/sjr666666/ai-elderly-health-assistant) | [#2](https://github.com/sjr666666/ai-elderly-health-assistant/pull/2) | Codex/publish project | `+32,520` `−7,445` | 219 | 22 分钟 | 08-03 |
 | [`ai-elderly-health-assistant`](https://github.com/sjr666666/ai-elderly-health-assistant) | [#1](https://github.com/sjr666666/ai-elderly-health-assistant/pull/1) | [codex] harden and document medication manager | `+507` `−561` | 29 | 1.3 小时 | 08-01 |
 
-<sub>由 [`scripts/generate_stats.py`](./scripts/generate_stats.py) 直连 GitHub REST API 生成，经 GitHub Actions 每日自动刷新 · 最后更新 2026-09-29 16:36 UTC</sub>
+<sub>由 [`scripts/generate_stats.py`](./scripts/generate_stats.py) 直连 GitHub REST API 生成，经 GitHub Actions 每日自动刷新 · 最后更新 2026-09-29 16:37 UTC</sub>
 <!-- STATS:END -->
 
 ---
