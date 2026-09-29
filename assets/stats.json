@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-29T15:31:52Z",
+ "generated_at": "2026-09-29T15:43:24Z",
  "user": "sjr666666",
  "prs": [
   {
@@ -12,7 +12,6 @@
    "created": "2026-08-01T03:52:41Z",
    "local_day": "2026-08-01",
    "local_hour": 11,
-   "date": "2026-08-01",
    "additions": 507,
    "deletions": 561,
    "changed_files": 29,
@@ -21,7 +20,8 @@
    "url": "https://github.com/sjr666666/ai-elderly-health-assistant/pull/1",
    "hours": 1.31,
    "stars": 7,
-   "lang": "Java"
+   "lang": "Java",
+   "date": "2026-08-01"
   },
   {
    "repo": "sjr666666/ai-elderly-health-assistant",
@@ -33,7 +33,6 @@
    "created": "2026-08-03T09:21:19Z",
    "local_day": "2026-08-03",
    "local_hour": 17,
-   "date": "2026-08-03",
    "additions": 32520,
    "deletions": 7445,
    "changed_files": 219,
@@ -42,7 +41,8 @@
    "url": "https://github.com/sjr666666/ai-elderly-health-assistant/pull/2",
    "hours": 0.36,
    "stars": 7,
-   "lang": "Java"
+   "lang": "Java",
+   "date": "2026-08-03"
   },
   {
    "repo": "sjr666666/ai-elderly-health-assistant",
@@ -54,7 +54,6 @@
    "created": "2026-08-05T11:58:53Z",
    "local_day": "2026-08-05",
    "local_hour": 19,
-   "date": "2026-08-05",
    "additions": 72,
    "deletions": 71,
    "changed_files": 10,
@@ -63,7 +62,8 @@
    "url": "https://github.com/sjr666666/ai-elderly-health-assistant/pull/3",
    "hours": 0.03,
    "stars": 7,
-   "lang": "Java"
+   "lang": "Java",
+   "date": "2026-08-05"
   },
   {
    "repo": "Snailclimb/interview-guide",
@@ -75,7 +75,6 @@
    "created": "2026-08-10T05:39:34Z",
    "local_day": "2026-08-10",
    "local_hour": 13,
-   "date": "2026-08-10",
    "additions": 3205,
    "deletions": 29,
    "changed_files": 43,
@@ -83,8 +82,9 @@
    "labels": [],
    "url": "https://github.com/Snailclimb/interview-guide/pull/50",
    "hours": 100.75,
-   "stars": 3297,
-   "lang": "Java"
+   "stars": 3299,
+   "lang": "Java",
+   "date": "2026-08-10"
   },
   {
    "repo": "helsome/folio",
@@ -96,7 +96,6 @@
    "created": "2026-09-11T04:13:38Z",
    "local_day": "2026-09-11",
    "local_hour": 12,
-   "date": "2026-09-11",
    "additions": 233,
    "deletions": 0,
    "changed_files": 4,
@@ -105,7 +104,8 @@
    "url": "https://github.com/helsome/folio/pull/41",
    "hours": 167.45,
    "stars": 261,
-   "lang": "TypeScript"
+   "lang": "TypeScript",
+   "date": "2026-09-11"
   },
   {
    "repo": "helsome/folio",
@@ -117,7 +117,6 @@
    "created": "2026-09-11T04:21:25Z",
    "local_day": "2026-09-11",
    "local_hour": 12,
-   "date": "2026-09-11",
    "additions": 437,
    "deletions": 0,
    "changed_files": 7,
@@ -126,7 +125,8 @@
    "url": "https://github.com/helsome/folio/pull/42",
    "hours": 167.32,
    "stars": 261,
-   "lang": "TypeScript"
+   "lang": "TypeScript",
+   "date": "2026-09-11"
   },
   {
    "repo": "helsome/folio",
@@ -138,7 +138,6 @@
    "created": "2026-09-11T04:29:08Z",
    "local_day": "2026-09-11",
    "local_hour": 12,
-   "date": "2026-09-11",
    "additions": 1459,
    "deletions": 23,
    "changed_files": 24,
@@ -147,7 +146,8 @@
    "url": "https://github.com/helsome/folio/pull/43",
    "hours": 167.19,
    "stars": 261,
-   "lang": "TypeScript"
+   "lang": "TypeScript",
+   "date": "2026-09-11"
   },
   {
    "repo": "helsome/folio",
@@ -159,7 +159,6 @@
    "created": "2026-09-11T09:51:24Z",
    "local_day": "2026-09-11",
    "local_hour": 17,
-   "date": "2026-09-11",
    "additions": 1886,
    "deletions": 23,
    "changed_files": 27,
@@ -168,7 +167,8 @@
    "url": "https://github.com/helsome/folio/pull/76",
    "hours": 161.82,
    "stars": 261,
-   "lang": "TypeScript"
+   "lang": "TypeScript",
+   "date": "2026-09-11"
   },
   {
    "repo": "modelcontextprotocol/typescript-sdk",
@@ -180,7 +180,6 @@
    "created": "2026-09-23T13:46:59Z",
    "local_day": "2026-09-23",
    "local_hour": 21,
-   "date": "2026-09-23",
    "additions": 43,
    "deletions": 9,
    "changed_files": 1,
@@ -190,8 +189,9 @@
    ],
    "url": "https://github.com/modelcontextprotocol/typescript-sdk/pull/2847",
    "hours": null,
-   "stars": 13486,
-   "lang": "TypeScript"
+   "stars": 13488,
+   "lang": "TypeScript",
+   "date": "2026-09-23"
   },
   {
    "repo": "freeCodeCamp/freeCodeCamp",
@@ -203,7 +203,6 @@
    "created": "2026-09-23T14:16:09Z",
    "local_day": "2026-09-23",
    "local_hour": 22,
-   "date": "2026-09-23",
    "additions": 4,
    "deletions": 4,
    "changed_files": 1,
@@ -215,8 +214,9 @@
    ],
    "url": "https://github.com/freeCodeCamp/freeCodeCamp/pull/70326",
    "hours": 0.24,
-   "stars": 456516,
-   "lang": "TypeScript"
+   "stars": 456517,
+   "lang": "TypeScript",
+   "date": "2026-09-23"
   },
   {
    "repo": "excalidraw/excalidraw",
@@ -228,7 +228,6 @@
    "created": "2026-09-24T03:48:36Z",
    "local_day": "2026-09-24",
    "local_hour": 11,
-   "date": "2026-09-24",
    "additions": 64,
    "deletions": 8,
    "changed_files": 3,
@@ -236,8 +235,9 @@
    "labels": [],
    "url": "https://github.com/excalidraw/excalidraw/pull/12159",
    "hours": null,
-   "stars": 133223,
-   "lang": "TypeScript"
+   "stars": 133231,
+   "lang": "TypeScript",
+   "date": "2026-09-24"
   },
   {
    "repo": "vitest-dev/vitest",
@@ -249,7 +249,6 @@
    "created": "2026-09-24T15:19:57Z",
    "local_day": "2026-09-24",
    "local_hour": 23,
-   "date": "2026-09-24",
    "additions": 22,
    "deletions": 2,
    "changed_files": 2,
@@ -258,7 +257,8 @@
    "url": "https://github.com/vitest-dev/vitest/pull/11352",
    "hours": null,
    "stars": 17173,
-   "lang": "TypeScript"
+   "lang": "TypeScript",
+   "date": "2026-09-24"
   },
   {
    "repo": "huggingface/smolagents",
@@ -270,7 +270,6 @@
    "created": "2026-09-26T15:12:15Z",
    "local_day": "2026-09-26",
    "local_hour": 23,
-   "date": "2026-09-26",
    "additions": 57,
    "deletions": 4,
    "changed_files": 2,
@@ -278,8 +277,9 @@
    "labels": [],
    "url": "https://github.com/huggingface/smolagents/pull/2855",
    "hours": null,
-   "stars": 29586,
-   "lang": "Python"
+   "stars": 29587,
+   "lang": "Python",
+   "date": "2026-09-26"
   },
   {
    "repo": "bytedance/deer-flow",
@@ -291,7 +291,6 @@
    "created": "2026-09-27T14:52:52Z",
    "local_day": "2026-09-27",
    "local_hour": 22,
-   "date": "2026-09-27",
    "additions": 338,
    "deletions": 18,
    "changed_files": 3,
@@ -303,8 +302,9 @@
    ],
    "url": "https://github.com/bytedance/deer-flow/pull/5974",
    "hours": null,
-   "stars": 83211,
-   "lang": "Python"
+   "stars": 83217,
+   "lang": "Python",
+   "date": "2026-09-27"
   },
   {
    "repo": "bytedance/deer-flow",
@@ -316,7 +316,6 @@
    "created": "2026-09-28T12:18:56Z",
    "local_day": "2026-09-28",
    "local_hour": 20,
-   "date": "2026-09-28",
    "additions": 28,
    "deletions": 28,
    "changed_files": 2,
@@ -329,8 +328,9 @@
    ],
    "url": "https://github.com/bytedance/deer-flow/pull/6005",
    "hours": 2.13,
-   "stars": 83211,
-   "lang": "Python"
+   "stars": 83217,
+   "lang": "Python",
+   "date": "2026-09-28"
   },
   {
    "repo": "bytedance/deer-flow",
@@ -342,7 +342,6 @@
    "created": "2026-09-29T12:51:08Z",
    "local_day": "2026-09-29",
    "local_hour": 20,
-   "date": "2026-09-29",
    "additions": 28,
    "deletions": 28,
    "changed_files": 2,
@@ -355,8 +354,9 @@
    ],
    "url": "https://github.com/bytedance/deer-flow/pull/6049",
    "hours": null,
-   "stars": 83211,
-   "lang": "Python"
+   "stars": 83217,
+   "lang": "Python",
+   "date": "2026-09-29"
   }
  ]
 }
