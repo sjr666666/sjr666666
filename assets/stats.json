@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-29T16:30:38Z",
+ "generated_at": "2026-09-29T16:35:16Z",
  "user": "sjr666666",
  "prs": [
   {
@@ -83,7 +83,7 @@
    "labels": [],
    "url": "https://github.com/Snailclimb/interview-guide/pull/50",
    "hours": 100.75,
-   "stars": 3297,
+   "stars": 3299,
    "lang": "Java"
   },
   {
@@ -190,7 +190,7 @@
    ],
    "url": "https://github.com/modelcontextprotocol/typescript-sdk/pull/2847",
    "hours": null,
-   "stars": 13486,
+   "stars": 13488,
    "lang": "TypeScript"
   },
   {
@@ -215,7 +215,7 @@
    ],
    "url": "https://github.com/freeCodeCamp/freeCodeCamp/pull/70326",
    "hours": 0.24,
-   "stars": 456516,
+   "stars": 456514,
    "lang": "TypeScript"
   },
   {
@@ -236,7 +236,7 @@
    "labels": [],
    "url": "https://github.com/excalidraw/excalidraw/pull/12159",
    "hours": null,
-   "stars": 133223,
+   "stars": 133235,
    "lang": "TypeScript"
   },
   {
@@ -257,7 +257,7 @@
    "labels": [],
    "url": "https://github.com/vitest-dev/vitest/pull/11352",
    "hours": null,
-   "stars": 17173,
+   "stars": 17172,
    "lang": "TypeScript"
   },
   {
@@ -278,7 +278,7 @@
    "labels": [],
    "url": "https://github.com/huggingface/smolagents/pull/2855",
    "hours": null,
-   "stars": 29586,
+   "stars": 29587,
    "lang": "Python"
   },
   {
@@ -303,7 +303,7 @@
    ],
    "url": "https://github.com/bytedance/deer-flow/pull/5974",
    "hours": null,
-   "stars": 83211,
+   "stars": 83219,
    "lang": "Python"
   },
   {
@@ -329,7 +329,7 @@
    ],
    "url": "https://github.com/bytedance/deer-flow/pull/6005",
    "hours": 2.13,
-   "stars": 83211,
+   "stars": 83219,
    "lang": "Python"
   },
   {
@@ -355,7 +355,7 @@
    ],
    "url": "https://github.com/bytedance/deer-flow/pull/6049",
    "hours": null,
-   "stars": 83211,
+   "stars": 83219,
    "lang": "Python"
   }
  ]
