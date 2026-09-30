@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-30T04:22:27Z",
+ "generated_at": "2026-09-30T09:39:56Z",
  "user": "sjr666666",
  "prs": [
   {
@@ -263,7 +263,7 @@
    "name": "deer-flow",
    "number": 6049,
    "title": "docs: fix 404ing landing-page links with root-relative /docs/ hrefs",
-   "status": "open",
+   "status": "closed",
    "created": "2026-09-29T12:51:08Z",
    "merged_at": null,
    "merged_date": "",
@@ -272,7 +272,7 @@
    "deletions": 28,
    "changed_files": 2,
    "url": "https://github.com/bytedance/deer-flow/pull/6049",
-   "hours": null
+   "hours": 18.59
   }
  ]
 }
