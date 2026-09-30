@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-29T16:37:58Z",
+ "generated_at": "2026-09-29T16:30:38Z",
  "user": "sjr666666",
  "prs": [
   {
@@ -12,8 +12,7 @@
    "created": "2026-08-01T03:52:41Z",
    "merged_at": "2026-08-01T05:11:32Z",
    "date": "2026-08-01",
-   "merged_date": "08-01",
-   "merged_year": "2026",
+   "merged_date": "2026-08-01",
    "additions": 507,
    "deletions": 561,
    "changed_files": 29,
@@ -22,7 +21,8 @@
    "url": "https://github.com/sjr666666/ai-elderly-health-assistant/pull/1",
    "hours": 1.31,
    "stars": 7,
-   "lang": "Java"
+   "lang": "Java",
+   "merged_year": "2026"
   },
   {
    "repo": "sjr666666/ai-elderly-health-assistant",
@@ -34,8 +34,7 @@
    "created": "2026-08-03T09:21:19Z",
    "merged_at": "2026-08-03T09:43:00Z",
    "date": "2026-08-03",
-   "merged_date": "08-03",
-   "merged_year": "2026",
+   "merged_date": "2026-08-03",
    "additions": 32520,
    "deletions": 7445,
    "changed_files": 219,
@@ -44,7 +43,8 @@
    "url": "https://github.com/sjr666666/ai-elderly-health-assistant/pull/2",
    "hours": 0.36,
    "stars": 7,
-   "lang": "Java"
+   "lang": "Java",
+   "merged_year": "2026"
   },
   {
    "repo": "sjr666666/ai-elderly-health-assistant",
@@ -56,8 +56,7 @@
    "created": "2026-08-05T11:58:53Z",
    "merged_at": "2026-08-05T12:00:38Z",
    "date": "2026-08-05",
-   "merged_date": "08-05",
-   "merged_year": "2026",
+   "merged_date": "2026-08-05",
    "additions": 72,
    "deletions": 71,
    "changed_files": 10,
@@ -66,7 +65,8 @@
    "url": "https://github.com/sjr666666/ai-elderly-health-assistant/pull/3",
    "hours": 0.03,
    "stars": 7,
-   "lang": "Java"
+   "lang": "Java",
+   "merged_year": "2026"
   },
   {
    "repo": "Snailclimb/interview-guide",
@@ -79,7 +79,6 @@
    "merged_at": null,
    "date": "2026-08-10",
    "merged_date": "",
-   "merged_year": "",
    "additions": 3205,
    "deletions": 29,
    "changed_files": 43,
@@ -87,8 +86,9 @@
    "labels": [],
    "url": "https://github.com/Snailclimb/interview-guide/pull/50",
    "hours": 100.75,
-   "stars": 3299,
-   "lang": "Java"
+   "stars": 3297,
+   "lang": "Java",
+   "merged_year": ""
   },
   {
    "repo": "helsome/folio",
@@ -100,8 +100,7 @@
    "created": "2026-09-11T04:13:38Z",
    "merged_at": "2026-09-18T03:40:46Z",
    "date": "2026-09-11",
-   "merged_date": "09-18",
-   "merged_year": "2026",
+   "merged_date": "2026-09-18",
    "additions": 233,
    "deletions": 0,
    "changed_files": 4,
@@ -110,7 +109,8 @@
    "url": "https://github.com/helsome/folio/pull/41",
    "hours": 167.45,
    "stars": 261,
-   "lang": "TypeScript"
+   "lang": "TypeScript",
+   "merged_year": "2026"
   },
   {
    "repo": "helsome/folio",
@@ -122,8 +122,7 @@
    "created": "2026-09-11T04:21:25Z",
    "merged_at": "2026-09-18T03:40:46Z",
    "date": "2026-09-11",
-   "merged_date": "09-18",
-   "merged_year": "2026",
+   "merged_date": "2026-09-18",
    "additions": 437,
    "deletions": 0,
    "changed_files": 7,
@@ -132,7 +131,8 @@
    "url": "https://github.com/helsome/folio/pull/42",
    "hours": 167.32,
    "stars": 261,
-   "lang": "TypeScript"
+   "lang": "TypeScript",
+   "merged_year": "2026"
   },
   {
    "repo": "helsome/folio",
@@ -144,8 +144,7 @@
    "created": "2026-09-11T04:29:08Z",
    "merged_at": "2026-09-18T03:40:46Z",
    "date": "2026-09-11",
-   "merged_date": "09-18",
-   "merged_year": "2026",
+   "merged_date": "2026-09-18",
    "additions": 1459,
    "deletions": 23,
    "changed_files": 24,
@@ -154,7 +153,8 @@
    "url": "https://github.com/helsome/folio/pull/43",
    "hours": 167.19,
    "stars": 261,
-   "lang": "TypeScript"
+   "lang": "TypeScript",
+   "merged_year": "2026"
   },
   {
    "repo": "helsome/folio",
@@ -166,8 +166,7 @@
    "created": "2026-09-11T09:51:24Z",
    "merged_at": "2026-09-18T03:40:45Z",
    "date": "2026-09-11",
-   "merged_date": "09-18",
-   "merged_year": "2026",
+   "merged_date": "2026-09-18",
    "additions": 1886,
    "deletions": 23,
    "changed_files": 27,
@@ -176,7 +175,8 @@
    "url": "https://github.com/helsome/folio/pull/76",
    "hours": 161.82,
    "stars": 261,
-   "lang": "TypeScript"
+   "lang": "TypeScript",
+   "merged_year": "2026"
   },
   {
    "repo": "modelcontextprotocol/typescript-sdk",
@@ -189,7 +189,6 @@
    "merged_at": null,
    "date": "2026-09-23",
    "merged_date": "",
-   "merged_year": "",
    "additions": 43,
    "deletions": 9,
    "changed_files": 1,
@@ -199,8 +198,9 @@
    ],
    "url": "https://github.com/modelcontextprotocol/typescript-sdk/pull/2847",
    "hours": null,
-   "stars": 13488,
-   "lang": "TypeScript"
+   "stars": 13486,
+   "lang": "TypeScript",
+   "merged_year": ""
   },
   {
    "repo": "freeCodeCamp/freeCodeCamp",
@@ -213,7 +213,6 @@
    "merged_at": null,
    "date": "2026-09-23",
    "merged_date": "",
-   "merged_year": "",
    "additions": 4,
    "deletions": 4,
    "changed_files": 1,
@@ -225,8 +224,9 @@
    ],
    "url": "https://github.com/freeCodeCamp/freeCodeCamp/pull/70326",
    "hours": 0.24,
-   "stars": 456515,
-   "lang": "TypeScript"
+   "stars": 456516,
+   "lang": "TypeScript",
+   "merged_year": ""
   },
   {
    "repo": "excalidraw/excalidraw",
@@ -239,7 +239,6 @@
    "merged_at": null,
    "date": "2026-09-24",
    "merged_date": "",
-   "merged_year": "",
    "additions": 64,
    "deletions": 8,
    "changed_files": 3,
@@ -247,8 +246,9 @@
    "labels": [],
    "url": "https://github.com/excalidraw/excalidraw/pull/12159",
    "hours": null,
-   "stars": 133235,
-   "lang": "TypeScript"
+   "stars": 133223,
+   "lang": "TypeScript",
+   "merged_year": ""
   },
   {
    "repo": "vitest-dev/vitest",
@@ -261,7 +261,6 @@
    "merged_at": null,
    "date": "2026-09-24",
    "merged_date": "",
-   "merged_year": "",
    "additions": 22,
    "deletions": 2,
    "changed_files": 2,
@@ -269,8 +268,9 @@
    "labels": [],
    "url": "https://github.com/vitest-dev/vitest/pull/11352",
    "hours": null,
-   "stars": 17172,
-   "lang": "TypeScript"
+   "stars": 17173,
+   "lang": "TypeScript",
+   "merged_year": ""
   },
   {
    "repo": "huggingface/smolagents",
@@ -283,7 +283,6 @@
    "merged_at": null,
    "date": "2026-09-26",
    "merged_date": "",
-   "merged_year": "",
    "additions": 57,
    "deletions": 4,
    "changed_files": 2,
@@ -291,8 +290,9 @@
    "labels": [],
    "url": "https://github.com/huggingface/smolagents/pull/2855",
    "hours": null,
-   "stars": 29587,
-   "lang": "Python"
+   "stars": 29586,
+   "lang": "Python",
+   "merged_year": ""
   },
   {
    "repo": "bytedance/deer-flow",
@@ -305,7 +305,6 @@
    "merged_at": null,
    "date": "2026-09-27",
    "merged_date": "",
-   "merged_year": "",
    "additions": 338,
    "deletions": 18,
    "changed_files": 3,
@@ -317,8 +316,9 @@
    ],
    "url": "https://github.com/bytedance/deer-flow/pull/5974",
    "hours": null,
-   "stars": 83219,
-   "lang": "Python"
+   "stars": 83211,
+   "lang": "Python",
+   "merged_year": ""
   },
   {
    "repo": "bytedance/deer-flow",
@@ -331,7 +331,6 @@
    "merged_at": null,
    "date": "2026-09-28",
    "merged_date": "",
-   "merged_year": "",
    "additions": 28,
    "deletions": 28,
    "changed_files": 2,
@@ -344,8 +343,9 @@
    ],
    "url": "https://github.com/bytedance/deer-flow/pull/6005",
    "hours": 2.13,
-   "stars": 83219,
-   "lang": "Python"
+   "stars": 83211,
+   "lang": "Python",
+   "merged_year": ""
   },
   {
    "repo": "bytedance/deer-flow",
@@ -358,7 +358,6 @@
    "merged_at": null,
    "date": "2026-09-29",
    "merged_date": "",
-   "merged_year": "",
    "additions": 28,
    "deletions": 28,
    "changed_files": 2,
@@ -371,8 +370,9 @@
    ],
    "url": "https://github.com/bytedance/deer-flow/pull/6049",
    "hours": null,
-   "stars": 83219,
-   "lang": "Python"
+   "stars": 83211,
+   "lang": "Python",
+   "merged_year": ""
   }
  ]
 }
