@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-29T16:30:38Z",
+ "generated_at": "2026-09-30T04:20:49Z",
  "user": "sjr666666",
  "prs": [
   {
@@ -11,18 +11,12 @@
    "status": "merged",
    "created": "2026-08-01T03:52:41Z",
    "merged_at": "2026-08-01T05:11:32Z",
-   "date": "2026-08-01",
    "merged_date": "2026-08-01",
    "additions": 507,
    "deletions": 561,
    "changed_files": 29,
-   "commits": 1,
-   "labels": [],
    "url": "https://github.com/sjr666666/ai-elderly-health-assistant/pull/1",
-   "hours": 1.31,
-   "stars": 7,
-   "lang": "Java",
-   "merged_year": "2026"
+   "hours": 1.31
   },
   {
    "repo": "sjr666666/ai-elderly-health-assistant",
@@ -33,18 +27,12 @@
    "status": "merged",
    "created": "2026-08-03T09:21:19Z",
    "merged_at": "2026-08-03T09:43:00Z",
-   "date": "2026-08-03",
    "merged_date": "2026-08-03",
    "additions": 32520,
    "deletions": 7445,
    "changed_files": 219,
-   "commits": 59,
-   "labels": [],
    "url": "https://github.com/sjr666666/ai-elderly-health-assistant/pull/2",
-   "hours": 0.36,
-   "stars": 7,
-   "lang": "Java",
-   "merged_year": "2026"
+   "hours": 0.36
   },
   {
    "repo": "sjr666666/ai-elderly-health-assistant",
@@ -55,18 +43,12 @@
    "status": "merged",
    "created": "2026-08-05T11:58:53Z",
    "merged_at": "2026-08-05T12:00:38Z",
-   "date": "2026-08-05",
    "merged_date": "2026-08-05",
    "additions": 72,
    "deletions": 71,
    "changed_files": 10,
-   "commits": 1,
-   "labels": [],
    "url": "https://github.com/sjr666666/ai-elderly-health-assistant/pull/3",
-   "hours": 0.03,
-   "stars": 7,
-   "lang": "Java",
-   "merged_year": "2026"
+   "hours": 0.03
   },
   {
    "repo": "Snailclimb/interview-guide",
@@ -77,18 +59,12 @@
    "status": "closed",
    "created": "2026-08-10T05:39:34Z",
    "merged_at": null,
-   "date": "2026-08-10",
    "merged_date": "",
    "additions": 3205,
    "deletions": 29,
    "changed_files": 43,
-   "commits": 1,
-   "labels": [],
    "url": "https://github.com/Snailclimb/interview-guide/pull/50",
-   "hours": 100.75,
-   "stars": 3297,
-   "lang": "Java",
-   "merged_year": ""
+   "hours": 100.75
   },
   {
    "repo": "helsome/folio",
@@ -99,18 +75,12 @@
    "status": "merged",
    "created": "2026-09-11T04:13:38Z",
    "merged_at": "2026-09-18T03:40:46Z",
-   "date": "2026-09-11",
    "merged_date": "2026-09-18",
    "additions": 233,
    "deletions": 0,
    "changed_files": 4,
-   "commits": 1,
-   "labels": [],
    "url": "https://github.com/helsome/folio/pull/41",
-   "hours": 167.45,
-   "stars": 261,
-   "lang": "TypeScript",
-   "merged_year": "2026"
+   "hours": 167.45
   },
   {
    "repo": "helsome/folio",
@@ -121,18 +91,12 @@
    "status": "merged",
    "created": "2026-09-11T04:21:25Z",
    "merged_at": "2026-09-18T03:40:46Z",
-   "date": "2026-09-11",
    "merged_date": "2026-09-18",
    "additions": 437,
    "deletions": 0,
    "changed_files": 7,
-   "commits": 3,
-   "labels": [],
    "url": "https://github.com/helsome/folio/pull/42",
-   "hours": 167.32,
-   "stars": 261,
-   "lang": "TypeScript",
-   "merged_year": "2026"
+   "hours": 167.32
   },
   {
    "repo": "helsome/folio",
@@ -143,18 +107,12 @@
    "status": "merged",
    "created": "2026-09-11T04:29:08Z",
    "merged_at": "2026-09-18T03:40:46Z",
-   "date": "2026-09-11",
    "merged_date": "2026-09-18",
    "additions": 1459,
    "deletions": 23,
    "changed_files": 24,
-   "commits": 14,
-   "labels": [],
    "url": "https://github.com/helsome/folio/pull/43",
-   "hours": 167.19,
-   "stars": 261,
-   "lang": "TypeScript",
-   "merged_year": "2026"
+   "hours": 167.19
   },
   {
    "repo": "helsome/folio",
@@ -165,18 +123,12 @@
    "status": "merged",
    "created": "2026-09-11T09:51:24Z",
    "merged_at": "2026-09-18T03:40:45Z",
-   "date": "2026-09-11",
    "merged_date": "2026-09-18",
    "additions": 1886,
    "deletions": 23,
    "changed_files": 27,
-   "commits": 16,
-   "labels": [],
    "url": "https://github.com/helsome/folio/pull/76",
-   "hours": 161.82,
-   "stars": 261,
-   "lang": "TypeScript",
-   "merged_year": "2026"
+   "hours": 161.82
   },
   {
    "repo": "modelcontextprotocol/typescript-sdk",
@@ -187,20 +139,12 @@
    "status": "open",
    "created": "2026-09-23T13:46:59Z",
    "merged_at": null,
-   "date": "2026-09-23",
    "merged_date": "",
    "additions": 43,
    "deletions": 9,
    "changed_files": 1,
-   "commits": 1,
-   "labels": [
-    "v2"
-   ],
    "url": "https://github.com/modelcontextprotocol/typescript-sdk/pull/2847",
-   "hours": null,
-   "stars": 13486,
-   "lang": "TypeScript",
-   "merged_year": ""
+   "hours": null
   },
   {
    "repo": "freeCodeCamp/freeCodeCamp",
@@ -211,22 +155,12 @@
    "status": "closed",
    "created": "2026-09-23T14:16:09Z",
    "merged_at": null,
-   "date": "2026-09-23",
    "merged_date": "",
    "additions": 4,
    "deletions": 4,
    "changed_files": 1,
-   "commits": 1,
-   "labels": [
-    "platform: learn",
-    "scope: i18n",
-    "deprioritized"
-   ],
    "url": "https://github.com/freeCodeCamp/freeCodeCamp/pull/70326",
-   "hours": 0.24,
-   "stars": 456516,
-   "lang": "TypeScript",
-   "merged_year": ""
+   "hours": 0.24
   },
   {
    "repo": "excalidraw/excalidraw",
@@ -237,18 +171,12 @@
    "status": "open",
    "created": "2026-09-24T03:48:36Z",
    "merged_at": null,
-   "date": "2026-09-24",
    "merged_date": "",
    "additions": 64,
    "deletions": 8,
    "changed_files": 3,
-   "commits": 1,
-   "labels": [],
    "url": "https://github.com/excalidraw/excalidraw/pull/12159",
-   "hours": null,
-   "stars": 133223,
-   "lang": "TypeScript",
-   "merged_year": ""
+   "hours": null
   },
   {
    "repo": "vitest-dev/vitest",
@@ -259,18 +187,12 @@
    "status": "open",
    "created": "2026-09-24T15:19:57Z",
    "merged_at": null,
-   "date": "2026-09-24",
    "merged_date": "",
    "additions": 22,
    "deletions": 2,
    "changed_files": 2,
-   "commits": 1,
-   "labels": [],
    "url": "https://github.com/vitest-dev/vitest/pull/11352",
-   "hours": null,
-   "stars": 17173,
-   "lang": "TypeScript",
-   "merged_year": ""
+   "hours": null
   },
   {
    "repo": "huggingface/smolagents",
@@ -281,18 +203,12 @@
    "status": "open",
    "created": "2026-09-26T15:12:15Z",
    "merged_at": null,
-   "date": "2026-09-26",
    "merged_date": "",
    "additions": 57,
    "deletions": 4,
    "changed_files": 2,
-   "commits": 1,
-   "labels": [],
    "url": "https://github.com/huggingface/smolagents/pull/2855",
-   "hours": null,
-   "stars": 29586,
-   "lang": "Python",
-   "merged_year": ""
+   "hours": null
   },
   {
    "repo": "bytedance/deer-flow",
@@ -303,22 +219,12 @@
    "status": "open",
    "created": "2026-09-27T14:52:52Z",
    "merged_at": null,
-   "date": "2026-09-27",
    "merged_date": "",
    "additions": 338,
    "deletions": 18,
    "changed_files": 3,
-   "commits": 3,
-   "labels": [
-    "area:backend",
-    "size/L",
-    "risk:medium"
-   ],
    "url": "https://github.com/bytedance/deer-flow/pull/5974",
-   "hours": null,
-   "stars": 83211,
-   "lang": "Python",
-   "merged_year": ""
+   "hours": null
   },
   {
    "repo": "bytedance/deer-flow",
@@ -329,23 +235,12 @@
    "status": "closed",
    "created": "2026-09-28T12:18:56Z",
    "merged_at": null,
-   "date": "2026-09-28",
    "merged_date": "",
    "additions": 28,
    "deletions": 28,
    "changed_files": 2,
-   "commits": 2,
-   "labels": [
-    "area:frontend",
-    "area:docs",
-    "size/S",
-    "risk:low"
-   ],
    "url": "https://github.com/bytedance/deer-flow/pull/6005",
-   "hours": 2.13,
-   "stars": 83211,
-   "lang": "Python",
-   "merged_year": ""
+   "hours": 2.13
   },
   {
    "repo": "bytedance/deer-flow",
@@ -356,23 +251,12 @@
    "status": "open",
    "created": "2026-09-29T12:51:08Z",
    "merged_at": null,
-   "date": "2026-09-29",
    "merged_date": "",
    "additions": 28,
    "deletions": 28,
    "changed_files": 2,
-   "commits": 1,
-   "labels": [
-    "area:frontend",
-    "area:docs",
-    "size/S",
-    "risk:low"
-   ],
    "url": "https://github.com/bytedance/deer-flow/pull/6049",
-   "hours": null,
-   "stars": 83211,
-   "lang": "Python",
-   "merged_year": ""
+   "hours": null
   }
  ]
 }
