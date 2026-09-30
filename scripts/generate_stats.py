@@ -133,7 +133,8 @@ def collect(user: str) -> list[dict]:
             "title": pr.get("title") or it.get("title") or "",
             "status": status,
             "created": pr.get("created_at"), "merged_at": merged_at,
-            "merged_date": merged_dt.astimezone(TZ8).strftime("%Y-%m-%d") if merged_dt else "",
+            "merged_date": merged_dt.astimezone(TZ8).strftime("%m-%d") if merged_dt else "",
+            "merged_year": merged_dt.astimezone(TZ8).strftime("%Y") if merged_dt else "",
             "additions": pr.get("additions") or 0,
             "deletions": pr.get("deletions") or 0,
             "changed_files": pr.get("changed_files") or 0,
@@ -337,7 +338,10 @@ def sync(md: str, prs: list[dict]) -> str:
     md = re.sub(r"(badge/Merged%20PRs-)\d+(-)", rf"\g<1>{len(merged)}\g<2>", md)
     md = re.sub(r"(badge/Upstream%20repos-)\d+(-)", rf"\g<1>{n_all_repo}\g<2>", md)
 
-    lines = ["<!-- STATS:BEGIN -->"]
+    years = sorted({p["merged_year"] for p in merged if p.get("merged_year")})
+    yr = years[0] if len(years) == 1 else (f"{years[0]}–{years[-1]}" if years else "")
+    lines = ["<!-- STATS:BEGIN -->",
+             f"**{len(merged)}** 个 PR 已被合并" + (f"（{yr} 年）" if yr else ""), ""]
     if up:
         links = "、".join(f"[`{r}`](https://github.com/{r})"
                           for r in sorted({p["repo"] for p in up}))
