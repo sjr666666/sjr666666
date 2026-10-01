@@ -185,22 +185,22 @@ def card_merged(prs: list[dict], C: dict) -> str:
     # 眉头
     b.append(f'<circle cx="{L + 4}" cy="50" r="3.2" fill="{C["accent"]}"/>')
     b.append(tx(L + 16, 54, "MERGED PULL REQUESTS", 12, C["accent"], "700", ls="2.4"))
-    b.append(tx(R, 54, f"github.com/{USER}", 11.5, C["text3"], "normal", "end", MONO))
+    b.append(tx(R, 54, f"github.com/{USER}", 12, C["text2"], "normal", "end", MONO))
 
     # 焦点数字
     n = str(len(merged))
     b.append(tx(L - 5, 146, n, 84, C["text"], "700", family=MONO, ls="-3.5"))
-    b.append(tx(L + 52 * len(n) + 16, 146, "个 PR 已合并进开源项目", 19, C["text2"], "600", ls="-0.2"))
+    b.append(tx(L + 52 * len(n) + 16, 146, "个 PR 已合并进开源项目", 20, C["text"], "600", ls="-0.2"))
     b.append(tx(L, 174, f"{len(upstream)} 个提给他人仓库 · {len(own)} 个自有项目",
-                13, C["text3"]))
+                14.5, C["text2"], "500"))
     b.append(f'<line x1="{L}" y1="202" x2="{R}" y2="202" stroke="{C["hair"]}"/>')
 
     # 仓库行：名称 + 星级，仅此两样
     y = 238
     for repo, items in shown:
         stars = max(p.get("stars") or 0 for p in items)
-        b.append(tx(L, y, repo, 14.5, C["text"], "600", family=MONO, ls="0.3"))
-        b.append(tx(R, y, f"★ {fmt_stars(stars)}", 14.5, C["text2"], "600", "end", MONO))
+        b.append(tx(L, y, repo, 15, C["text"], "700", family=MONO, ls="0.3"))
+        b.append(tx(R, y, f"★ {fmt_stars(stars)}", 15, C["text"], "600", "end", MONO))
         y += 36
 
     H = int(y + 26 + 44)
@@ -213,8 +213,8 @@ def card_merged(prs: list[dict], C: dict) -> str:
             f'<rect x="0" y="0" width="{W}" height="3" rx="1.5" fill="{C["accent"]}" '
             f'fill-opacity="0.9"/>']
     tail = [f'<line x1="{L}" y1="{H - 44}" x2="{R}" y2="{H - 44}" stroke="{C["hair"]}"/>',
-            tx(L, H - 20, "数据来源 GitHub REST API · 每日自动刷新", 11.5, C["text3"]),
-            tx(R, H - 20, f"更新于 {stamp}", 11.5, C["text3"], "normal", "end", MONO),
+            tx(L, H - 20, "数据来源 GitHub REST API · 每日自动刷新", 13, C["text2"]),
+            tx(R, H - 20, f"更新于 {stamp}", 13, C["text2"], "normal", "end", MONO),
             '</svg>']
     return "\n".join(head + b + tail) + "\n"
 
@@ -226,9 +226,8 @@ def sync(md: str, prs: list[dict]) -> str:
     md = re.sub(r"(badge/Merged%20PRs-)\d+(-)", rf"\g<1>{len(merged)}\g<2>", md)
 
     lines = ["<!-- STATS:BEGIN -->",
-             f"<sub>**{len(merged)}** 个 PR 已被合并 · "
-             "由 [`scripts/generate_stats.py`](./scripts/generate_stats.py) 直连 "
-             "GitHub REST API 生成，经 GitHub Actions 每日自动刷新</sub>",
+             f"**{len(merged)}** 个 PR 已被合并 · 数据由 "
+             "[`generate_stats.py`](./scripts/generate_stats.py) 每日直连 GitHub API 刷新",
              "<!-- STATS:END -->"]
     return re.sub(r"<!-- STATS:BEGIN -->.*?<!-- STATS:END -->", "\n".join(lines), md, flags=re.S)
 

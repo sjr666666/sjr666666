@@ -19,7 +19,7 @@
 </picture>
 
 <!-- STATS:BEGIN -->
-<sub>**8** 个 PR 已被合并 · 由 [`scripts/generate_stats.py`](./scripts/generate_stats.py) 直连 GitHub REST API 生成，经 GitHub Actions 每日自动刷新</sub>
+**8** 个 PR 已被合并 · 数据由 [`generate_stats.py`](./scripts/generate_stats.py) 每日直连 GitHub API 刷新
 <!-- STATS:END -->
 
 ---
