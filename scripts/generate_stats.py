@@ -195,13 +195,13 @@ def card_merged(prs: list[dict], C: dict) -> str:
                 14.5, C["text2"], "500"))
     b.append(f'<line x1="{L}" y1="202" x2="{R}" y2="202" stroke="{C["hair"]}"/>')
 
-    # 仓库行：名称 + 星级，仅此两样
+    # 仓库行：名称 + 星级，仅此两样（列表主体，字号压过副标题一级）
     y = 238
     for repo, items in shown:
         stars = max(p.get("stars") or 0 for p in items)
-        b.append(tx(L, y, repo, 15, C["text"], "700", family=MONO, ls="0.3"))
-        b.append(tx(R, y, f"★ {fmt_stars(stars)}", 15, C["text"], "600", "end", MONO))
-        y += 36
+        b.append(tx(L, y, repo, 18, C["text"], "700", family=MONO, ls="0.2"))
+        b.append(tx(R, y, f"★ {fmt_stars(stars)}", 16, C["text"], "600", "end", MONO))
+        y += 42
 
     H = int(y + 26 + 44)
     stamp = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
