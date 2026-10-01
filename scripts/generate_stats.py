@@ -12,6 +12,8 @@ README.md 的标记区间。
   旧的 #gh-dark-mode-only 片段已废弃。
 - 配色直接采用 GitHub Primer 原生色值，卡片与站点视觉同源，不显突兀。
 - 已合并到他人大仓库的 PR 是 GitHub 上最强的可信凭证，必须显性展示。
+- 展示排序按**仓库含金量**：上游仓库以 stars 降序（公开可验证、每日随数据刷新），
+  同仓库内按 PR 号；自有项目排在他人仓库之后。
 
 用法：
     python scripts/generate_stats.py                  # 本地（走 gh CLI 鉴权）
@@ -132,6 +134,7 @@ def collect(user: str) -> list[dict]:
             "number": it["number"],
             "title": pr.get("title") or it.get("title") or "",
             "status": status,
+            "stars": repos[repo_api]["stars"],
             "created": pr.get("created_at"), "merged_at": merged_at,
             "merged_date": merged_dt.astimezone(TZ8).strftime("%m-%d") if merged_dt else "",
             "merged_year": merged_dt.astimezone(TZ8).strftime("%Y") if merged_dt else "",
@@ -185,6 +188,20 @@ def cut_px(s: str, max_px: float, size: float = 13.5) -> str:
 
 def fmt_int(n: int) -> str:
     return f"{n:,}"
+
+
+def fmt_stars(n: int) -> str:
+    """★ 计数展示：83290 → 83.3k，264 → 264。"""
+    if n >= 1000:
+        return f"{n / 1000:.1f}".rstrip("0").rstrip(".") + "k"
+    return str(n)
+
+
+def prestige_key(p: dict):
+    """含金量排序：他人仓库优先 → 仓库 stars 降序 → 合并时间新者优先。"""
+    dt = parse_ts(p["merged_at"])
+    return (p["owner"] == USER, -(p.get("stars") or 0),
+            -(dt.timestamp() if dt else 0))
 
 
 def fmt_dur(h):
@@ -251,7 +268,10 @@ def card_merged(prs: list[dict], C: dict) -> str:
     groups: dict[str, list[dict]] = {}
     for p in upstream:
         groups.setdefault(p["repo"], []).append(p)
-    groups = dict(sorted(groups.items(), key=lambda kv: -len(kv[1])))
+    # 分组按含金量排：仓库 stars 降序，PR 数量为次序
+    groups = dict(sorted(
+        groups.items(),
+        key=lambda kv: (-max(p.get("stars") or 0 for p in kv[1]), -len(kv[1]))))
     shown = list(groups.items())[:2]
 
     b: list[str] = []
@@ -275,13 +295,19 @@ def card_merged(prs: list[dict], C: dict) -> str:
         g_add = sum(p["additions"] for p in items)
         g_del = sum(p["deletions"] for p in items)
         g_files = sum(p["changed_files"] for p in items)
-        b.append(tx(L, y, repo.upper(), 13.5, C["text"], "700", family=MONO, ls="0.6"))
+        repo_label = repo.upper()
+        b.append(tx(L, y, repo_label, 13.5, C["text"], "700", family=MONO, ls="0.6"))
+        stars = max(p.get("stars") or 0 for p in items)
+        if stars:
+            # 星级 = 含金量信号，紧跟仓库名右侧（mono 13.5px ≈ 0.6em/字符 + 0.6 字距）
+            b.append(tx(L + len(repo_label) * 8.7 + 16, y,
+                        f"★ {fmt_stars(stars)}", 13, C["text2"], "600", family=MONO))
         b.append(tx(R, y, f"{len(items)} 个 PR · +{fmt_int(g_add)} / −{fmt_int(g_del)} 行 · "
                           f"{g_files} 文件", 12, C["text3"], "normal", "end", MONO))
-        theme = common_theme(items)
+        theme = common_theme(items) if len(items) >= 2 else ""
         if theme:
             b.append(tx(L, y + 21, f"共同主题：{theme}", 12.5, C["text3"]))
-        first = y + 48
+        first = y + (48 if theme else 30)
         for i, p in enumerate(sorted(items, key=lambda x: x["number"])):
             rb = first + i * 30
             b.append(merge_glyph(L + 1, rb - 12, C["accent"]))
@@ -318,7 +344,7 @@ def card_merged(prs: list[dict], C: dict) -> str:
 def pr_table(merged: list[dict]) -> str:
     rows = ["| 仓库 | PR | 变更内容 | 规模 | 交付周期 | 合并日期 |",
             "|:--|--:|:--|--:|--:|--:|"]
-    for p in sorted(merged, key=lambda x: x["merged_at"] or "", reverse=True):
+    for p in sorted(merged, key=prestige_key):
         title = re.sub(r"\s*\(#\d+\)\s*$", "", p["title"])   # 去掉与 PR 列重复的 (#NN)
         rows.append(
             f'| [`{p["name"]}`](https://github.com/{p["repo"]}) '
@@ -343,8 +369,10 @@ def sync(md: str, prs: list[dict]) -> str:
     lines = ["<!-- STATS:BEGIN -->",
              f"**{len(merged)}** 个 PR 已被合并" + (f"（{yr} 年）" if yr else ""), ""]
     if up:
-        links = "、".join(f"[`{r}`](https://github.com/{r})"
-                          for r in sorted({p["repo"] for p in up}))
+        up_repos = sorted({p["repo"] for p in up},
+                          key=lambda r: -max((p.get("stars") or 0)
+                                             for p in up if p["repo"] == r))
+        links = "、".join(f"[`{r}`](https://github.com/{r})" for r in up_repos)
         lines.append(
             f"- **{len(up)}** 个合并进他人仓库（{links}）· 合计 "
             f"**+{fmt_int(sum(p['additions'] for p in up))} / "
