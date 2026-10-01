@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-01T07:54:46Z",
+ "generated_at": "2026-10-01T07:56:08Z",
  "user": "sjr666666",
  "prs": [
   {
@@ -230,7 +230,7 @@
    "number": 5974,
    "title": "fix(readability): keep resolved link destinations when Readability.js is unavailable",
    "status": "open",
-   "stars": 83291,
+   "stars": 83292,
    "created": "2026-09-27T14:52:52Z",
    "merged_at": null,
    "merged_date": "",
@@ -247,7 +247,7 @@
    "number": 6005,
    "title": "docs: fix 404ing relative links on the docs landing page",
    "status": "closed",
-   "stars": 83291,
+   "stars": 83292,
    "created": "2026-09-28T12:18:56Z",
    "merged_at": null,
    "merged_date": "",
@@ -264,7 +264,7 @@
    "number": 6049,
    "title": "docs: fix 404ing landing-page links with root-relative /docs/ hrefs",
    "status": "closed",
-   "stars": 83291,
+   "stars": 83292,
    "created": "2026-09-29T12:51:08Z",
    "merged_at": null,
    "merged_date": "",
@@ -281,7 +281,7 @@
    "number": 6129,
    "title": "docs(zh): add the missing Startup Modes section to README_zh",
    "status": "merged",
-   "stars": 83291,
+   "stars": 83292,
    "created": "2026-09-30T17:45:44Z",
    "merged_at": "2026-09-30T23:57:14Z",
    "merged_date": "10-01",
@@ -298,7 +298,7 @@
    "number": 6137,
    "title": "docs(readme): add the missing Gateway admin security note to README_ja",
    "status": "closed",
-   "stars": 83291,
+   "stars": 83292,
    "created": "2026-10-01T02:13:42Z",
    "merged_at": null,
    "merged_date": "",
@@ -324,6 +324,23 @@
    "deletions": 0,
    "changed_files": 1,
    "url": "https://github.com/langgenius/dify-plugins/pull/3199"
+  },
+  {
+   "repo": "bytedance/deer-flow",
+   "owner": "bytedance",
+   "name": "deer-flow",
+   "number": 6153,
+   "title": "fix(skills): record the content actually overwritten in custom-skill history",
+   "status": "open",
+   "stars": 83292,
+   "created": "2026-10-01T07:54:57Z",
+   "merged_at": null,
+   "merged_date": "",
+   "merged_year": "",
+   "additions": 189,
+   "deletions": 35,
+   "changed_files": 2,
+   "url": "https://github.com/bytedance/deer-flow/pull/6153"
   }
  ]
 }
