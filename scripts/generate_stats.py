@@ -1,19 +1,19 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Merged PR Observatory — 静态资源生成器
+Merged PR Observatory — 静态资源生成器（极简版）
 
-只统计**已合并**的 Pull Request，生成 **亮 / 暗两版** SVG 卡片（供 README 用
-<picture> + prefers-color-scheme 按 GitHub 主题自动切换），并把明细表格回写进
-README.md 的标记区间。
+只统计**已合并**的 Pull Request，生成 **亮 / 暗两版** 极简 SVG 卡片
+（README 用 <picture> + prefers-color-scheme 按 GitHub 主题自动切换），
+并把一行统计小字回写 README.md 的标记区间。
 
-设计依据（2025-2026 业内实践）：
-- GitHub 官方推荐用 <picture> + prefers-color-scheme 做主题自适应；
-  旧的 #gh-dark-mode-only 片段已废弃。
-- 配色直接采用 GitHub Primer 原生色值，卡片与站点视觉同源，不显突兀。
-- 已合并到他人大仓库的 PR 是 GitHub 上最强的可信凭证，必须显性展示。
-- 展示排序按**仓库含金量**：上游仓库以 stars 降序（公开可验证、每日随数据刷新），
-  同仓库内按 PR 号；自有项目排在他人仓库之后。
+设计原则（用户反馈驱动，2026-10-01 二次精简）：
+- 一个焦点数字（已合并 PR 总数）+ 一条支撑链：每个上游仓库一行，
+  只显示**仓库名 + ★ 星级**。行数 / 文件数 / PR 明细一律不上卡片。
+- 排序按仓库含金量：上游仓库以 stars 降序（公开可验证、每日随数据刷新），
+  同仓库内按 PR 号；自有项目不进列表（已在「代表项目」段展示）。
+- 贡献贪吃蛇（Platane/snk）由 .github/workflows/snake.yml 独立生成，
+  输出在 output 分支，README 顶部引用。
 
 用法：
     python scripts/generate_stats.py                  # 本地（走 gh CLI 鉴权）
@@ -58,11 +58,6 @@ DARK = {
 FONT = ("-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC',"
         "'Hiragino Sans GB','Microsoft YaHei',sans-serif")
 MONO = "ui-monospace,'SF Mono',Menlo,Consolas,monospace"
-# GitHub 官方 octicon: git-merge（16×16，MIT）
-MERGE_ICON = ("M5 3.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm0 2.122a2.25 2.25 0 1 0-1.5 0v.878A2.25 "
-              "2.25 0 0 0 5.75 8.5h1.5v2.128a2.251 2.251 0 1 0 1.5 0V8.5h1.5a2.25 2.25 0 0 0 2.25-2.25v-.878"
-              "a2.25 2.25 0 1 0-1.5 0v.878a.75.75 0 0 1-.75.75h-4.5A.75.75 0 0 1 5 6.25v-.878Zm3.75 "
-              "7.378a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm3-8.75a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z")
 
 
 # ---------------------------------------------------------------- 取数
@@ -123,8 +118,6 @@ def collect(user: str) -> list[dict]:
 
         pr = gh_api(f"/repos/{repo_api}/pulls/{it['number']}")
         merged_at = pr.get("merged_at")
-        created = parse_ts(pr.get("created_at"))
-        end = parse_ts(merged_at) if merged_at else parse_ts(pr.get("closed_at"))
         status = "merged" if merged_at else ("open" if pr.get("state") == "open" else "closed")
         merged_dt = parse_ts(merged_at)
         owner, name = repo_api.split("/")
@@ -142,7 +135,6 @@ def collect(user: str) -> list[dict]:
             "deletions": pr.get("deletions") or 0,
             "changed_files": pr.get("changed_files") or 0,
             "url": pr.get("html_url") or f"https://github.com/{repo_api}/pull/{it['number']}",
-            "hours": round((end - created).total_seconds() / 3600, 2) if (end and created) else None,
         })
 
     prs.sort(key=lambda p: p["created"] or "")
@@ -155,89 +147,11 @@ def esc(s) -> str:
             .replace(">", "&gt;").replace('"', "&quot;"))
 
 
-def cut(s: str, n: int) -> str:
-    return s if len(s) <= n else s[: n - 1] + "…"
-
-
-# 全角字符区间（CJK / 假名 / 全角标点等）
-_WIDE = ((0x1100, 0x115F), (0x2E80, 0xA4CF), (0xAC00, 0xD7A3),
-         (0xF900, 0xFAFF), (0xFE30, 0xFE6F), (0xFF00, 0xFF60), (0xFFE0, 0xFFE6))
-# 实测：13.5px 下比例字体约 6.3px/字符（0.467 em），全角按 1 em 计
-_ASCII_RATIO = 0.467
-
-
-def _char_px(ch: str, size: float) -> float:
-    o = ord(ch)
-    for a, b in _WIDE:
-        if a <= o <= b:
-            return size
-    return size * (_ASCII_RATIO if o < 0x0250 else 0.52)
-
-
-def cut_px(s: str, max_px: float, size: float = 13.5) -> str:
-    """按渲染宽度截断，中英文混排都不会溢出。"""
-    w, out = 0.0, []
-    for ch in s:
-        cw = _char_px(ch, size)
-        if w + cw > max_px:
-            return "".join(out).rstrip() + "…"
-        out.append(ch)
-        w += cw
-    return s
-
-
-def fmt_int(n: int) -> str:
-    return f"{n:,}"
-
-
 def fmt_stars(n: int) -> str:
     """★ 计数展示：83290 → 83.3k，264 → 264。"""
     if n >= 1000:
         return f"{n / 1000:.1f}".rstrip("0").rstrip(".") + "k"
     return str(n)
-
-
-def prestige_key(p: dict):
-    """含金量排序：他人仓库优先 → 仓库 stars 降序 → 合并时间新者优先。"""
-    dt = parse_ts(p["merged_at"])
-    return (p["owner"] == USER, -(p.get("stars") or 0),
-            -(dt.timestamp() if dt else 0))
-
-
-def fmt_dur(h):
-    if h is None:
-        return "—"
-    if h < 1:
-        return f"{max(1, round(h * 60))} 分钟"
-    if h < 24:
-        return f"{h:.1f}".rstrip("0").rstrip(".") + " 小时"
-    d = h / 24
-    return (f"{d:.1f}".rstrip("0").rstrip(".") if d < 10 else str(round(d))) + " 天"
-
-
-def common_theme(items: list[dict]) -> str:
-    """从一组 PR 标题里提取共同主题词（小写比对，按首次出现顺序），避免写死文案。"""
-    STOP = {"add", "the", "for", "and", "with", "into", "from", "when", "that",
-            "not", "use", "make", "keep", "only", "new", "all", "fix", "feat",
-            "docs", "test", "chore", "refactor", "perf", "build", "ci"}
-
-    def body(t: str) -> str:
-        if "):" in t:
-            return t.split("):", 1)[1]
-        return t.split(":", 1)[1] if ":" in t else t
-
-    if not items:
-        return ""
-    sets = []
-    for p in items:
-        seen, order = set(), {}
-        for w in re.split(r"[^0-9A-Za-z]+", body(p["title"])):
-            lw = w.lower()
-            if len(lw) >= 3 and lw.isascii() and lw not in STOP and lw not in seen:
-                seen.add(lw)
-                order[lw] = w
-        sets.append(order)
-    return " ".join([sets[0][k] for k in sets[0] if all(k in s2 for s2 in sets[1:])][:3])
 
 
 def tx(x, y, s, size=12, fill="#000", weight="normal", anchor="start",
@@ -248,22 +162,15 @@ def tx(x, y, s, size=12, fill="#000", weight="normal", anchor="start",
             f'font-size="{size}" fill="{fill}" font-weight="{weight}"{a}{l}>{esc(s)}</text>')
 
 
-def merge_glyph(x, y, color, scale=0.78) -> str:
-    return (f'<g transform="translate({x} {y}) scale({scale})">'
-            f'<path d="{MERGE_ICON}" fill="{color}"/></g>')
-
-
-# ---------------------------------------------------------------- 卡片
+# ---------------------------------------------------------------- 卡片（极简）
 def card_merged(prs: list[dict], C: dict) -> str:
-    """962 宽、高度自适应：一个焦点数字 + 上游合并故事 + 明细行。"""
+    """962 宽、高度自适应：焦点数字 + 每上游仓库一行（仓库名 + ★）。"""
     W = 962
     L, R = 40, W - 40
 
     merged = [p for p in prs if p["status"] == "merged"]
     upstream = [p for p in merged if p["owner"] != USER]
     own = [p for p in merged if p["owner"] == USER]
-    hours = sorted(p["hours"] for p in merged if p["hours"] is not None)
-    median = hours[len(hours) // 2] if hours else None
 
     groups: dict[str, list[dict]] = {}
     for p in upstream:
@@ -272,7 +179,7 @@ def card_merged(prs: list[dict], C: dict) -> str:
     groups = dict(sorted(
         groups.items(),
         key=lambda kv: (-max(p.get("stars") or 0 for p in kv[1]), -len(kv[1]))))
-    shown = list(groups.items())[:2]
+    shown = list(groups.items())[:6]
 
     b: list[str] = []
     # 眉头
@@ -284,51 +191,23 @@ def card_merged(prs: list[dict], C: dict) -> str:
     n = str(len(merged))
     b.append(tx(L - 5, 146, n, 84, C["text"], "700", family=MONO, ls="-3.5"))
     b.append(tx(L + 52 * len(n) + 16, 146, "个 PR 已合并进开源项目", 19, C["text2"], "600", ls="-0.2"))
-    sub = (f"{len(upstream)} 个提给他人仓库 · {len(own)} 个自有项目"
-           + (f" · 中位交付 {fmt_dur(median)}" if median else ""))
-    b.append(tx(L, 174, sub, 13, C["text3"]))
+    b.append(tx(L, 174, f"{len(upstream)} 个提给他人仓库 · {len(own)} 个自有项目",
+                13, C["text3"]))
     b.append(f'<line x1="{L}" y1="202" x2="{R}" y2="202" stroke="{C["hair"]}"/>')
 
-    # 上游分组
-    y, bottom = 230, 230
+    # 仓库行：名称 + 星级，仅此两样
+    y = 238
     for repo, items in shown:
-        g_add = sum(p["additions"] for p in items)
-        g_del = sum(p["deletions"] for p in items)
-        g_files = sum(p["changed_files"] for p in items)
-        repo_label = repo.upper()
-        b.append(tx(L, y, repo_label, 13.5, C["text"], "700", family=MONO, ls="0.6"))
         stars = max(p.get("stars") or 0 for p in items)
-        if stars:
-            # 星级 = 含金量信号，紧跟仓库名右侧（mono 13.5px ≈ 0.6em/字符 + 0.6 字距）
-            b.append(tx(L + len(repo_label) * 8.7 + 16, y,
-                        f"★ {fmt_stars(stars)}", 13, C["text2"], "600", family=MONO))
-        b.append(tx(R, y, f"{len(items)} 个 PR · +{fmt_int(g_add)} / −{fmt_int(g_del)} 行 · "
-                          f"{g_files} 文件", 12, C["text3"], "normal", "end", MONO))
-        theme = common_theme(items) if len(items) >= 2 else ""
-        if theme:
-            b.append(tx(L, y + 21, f"共同主题：{theme}", 12.5, C["text3"]))
-        first = y + (48 if theme else 30)
-        for i, p in enumerate(sorted(items, key=lambda x: x["number"])):
-            rb = first + i * 30
-            b.append(merge_glyph(L + 1, rb - 12, C["accent"]))
-            b.append(tx(L + 27, rb, f"#{p['number']}", 12, C["text3"], "normal", "start", MONO))
-            b.append(tx(L + 72, rb,
-                        cut_px(re.sub(r"\s*\(#\d+\)\s*$", "", p["title"]), 740),
-                        13.5, C["text2"]))
-            b.append(tx(R, rb, f"+{fmt_int(p['additions'])}", 13.5, C["add"], "600", "end", MONO))
-            bottom = rb
-        y = first + (len(items) - 1) * 30 + 34
+        b.append(tx(L, y, repo, 14.5, C["text"], "600", family=MONO, ls="0.3"))
+        b.append(tx(R, y, f"★ {fmt_stars(stars)}", 14.5, C["text2"], "600", "end", MONO))
+        y += 36
 
-    if len(groups) > len(shown):
-        b.append(tx(L, y, f"另有 {len(groups) - len(shown)} 个他人仓库的合并 PR，见下表",
-                    12.5, C["text3"]))
-        bottom = y
-
-    H = int(bottom + 28 + 44)
+    H = int(y + 26 + 44)
     stamp = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
 
     head = [f'<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" '
-            f'viewBox="0 0 {W} {H}" role="img" aria-label="已合并的 Pull Request 总览">',
+            f'viewBox="0 0 {W} {H}" role="img" aria-label="已合并的 Pull Request">',
             f'<rect x="0.5" y="0.5" width="{W - 1}" height="{H - 1}" rx="12" '
             f'fill="{C["bg"]}" stroke="{C["border"]}"/>',
             f'<rect x="0" y="0" width="{W}" height="3" rx="1.5" fill="{C["accent"]}" '
@@ -341,51 +220,16 @@ def card_merged(prs: list[dict], C: dict) -> str:
 
 
 # ---------------------------------------------------------------- README
-def pr_table(merged: list[dict]) -> str:
-    rows = ["| 仓库 | PR | 变更内容 | 规模 | 交付周期 | 合并日期 |",
-            "|:--|--:|:--|--:|--:|--:|"]
-    for p in sorted(merged, key=prestige_key):
-        title = re.sub(r"\s*\(#\d+\)\s*$", "", p["title"])   # 去掉与 PR 列重复的 (#NN)
-        rows.append(
-            f'| [`{p["name"]}`](https://github.com/{p["repo"]}) '
-            f'| [#{p["number"]}]({p["url"]}) '
-            f'| {cut_px(title, 470, 15)} '
-            f'| `+{fmt_int(p["additions"])}`' + (f' `−{fmt_int(p["deletions"])}`' if p["deletions"] else '') + f' · {p["changed_files"]} 文件 '
-            f'| {fmt_dur(p["hours"])} | {p["merged_date"]} |')
-    return "\n".join(rows)
-
-
 def sync(md: str, prs: list[dict]) -> str:
+    """只同步徽章数字与一行统计小字；明细表格已按 2026-10-01 反馈移除。"""
     merged = [p for p in prs if p["status"] == "merged"]
-    up = [p for p in merged if p["owner"] != USER]
-    own = [p for p in merged if p["owner"] == USER]
-    n_all_repo = len({p["repo"] for p in prs})
-
     md = re.sub(r"(badge/Merged%20PRs-)\d+(-)", rf"\g<1>{len(merged)}\g<2>", md)
-    md = re.sub(r"(badge/Upstream%20repos-)\d+(-)", rf"\g<1>{n_all_repo}\g<2>", md)
 
-    years = sorted({p["merged_year"] for p in merged if p.get("merged_year")})
-    yr = years[0] if len(years) == 1 else (f"{years[0]}–{years[-1]}" if years else "")
     lines = ["<!-- STATS:BEGIN -->",
-             f"**{len(merged)}** 个 PR 已被合并" + (f"（{yr} 年）" if yr else ""), ""]
-    if up:
-        up_repos = sorted({p["repo"] for p in up},
-                          key=lambda r: -max((p.get("stars") or 0)
-                                             for p in up if p["repo"] == r))
-        links = "、".join(f"[`{r}`](https://github.com/{r})" for r in up_repos)
-        lines.append(
-            f"- **{len(up)}** 个合并进他人仓库（{links}）· 合计 "
-            f"**+{fmt_int(sum(p['additions'] for p in up))} / "
-            f"−{fmt_int(sum(p['deletions'] for p in up))}** 行 · "
-            f"{sum(p['changed_files'] for p in up)} 个文件")
-    if own:
-        names = "、".join(sorted({p["name"] for p in own}))
-        lines.append(f"- **{len(own)}** 个自有项目（`{names}`）的发布与加固 PR")
-    lines += ["", pr_table(merged), "",
-              "<sub>由 [`scripts/generate_stats.py`](./scripts/generate_stats.py) "
-              "直连 GitHub REST API 生成，经 GitHub Actions 每日自动刷新 · 最后更新 "
-              f"{datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M UTC')}</sub>",
-              "<!-- STATS:END -->"]
+             f"<sub>**{len(merged)}** 个 PR 已被合并 · "
+             "由 [`scripts/generate_stats.py`](./scripts/generate_stats.py) 直连 "
+             "GitHub REST API 生成，经 GitHub Actions 每日自动刷新</sub>",
+             "<!-- STATS:END -->"]
     return re.sub(r"<!-- STATS:BEGIN -->.*?<!-- STATS:END -->", "\n".join(lines), md, flags=re.S)
 
 
@@ -401,12 +245,6 @@ def main() -> int:
         (ASSETS / f"merged-prs-{name}.svg").write_text(
             card_merged(prs, palette), encoding="utf-8")
         print(f"  assets/merged-prs-{name}.svg")
-
-    for stale in ("merged-prs.svg", "pr-overview.svg", "pr-calendar.svg"):
-        f = ASSETS / stale
-        if f.exists():
-            f.unlink()
-            print(f"  已移除旧资源 assets/{stale}")
 
     if README.exists():
         README.write_text(sync(README.read_text(encoding="utf-8"), prs), encoding="utf-8")

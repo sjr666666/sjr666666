@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-01T06:34:56Z",
+ "generated_at": "2026-10-01T07:37:21Z",
  "user": "sjr666666",
  "prs": [
   {
@@ -17,8 +17,7 @@
    "additions": 507,
    "deletions": 561,
    "changed_files": 29,
-   "url": "https://github.com/sjr666666/ai-elderly-health-assistant/pull/1",
-   "hours": 1.31
+   "url": "https://github.com/sjr666666/ai-elderly-health-assistant/pull/1"
   },
   {
    "repo": "sjr666666/ai-elderly-health-assistant",
@@ -35,8 +34,7 @@
    "additions": 32520,
    "deletions": 7445,
    "changed_files": 219,
-   "url": "https://github.com/sjr666666/ai-elderly-health-assistant/pull/2",
-   "hours": 0.36
+   "url": "https://github.com/sjr666666/ai-elderly-health-assistant/pull/2"
   },
   {
    "repo": "sjr666666/ai-elderly-health-assistant",
@@ -53,8 +51,7 @@
    "additions": 72,
    "deletions": 71,
    "changed_files": 10,
-   "url": "https://github.com/sjr666666/ai-elderly-health-assistant/pull/3",
-   "hours": 0.03
+   "url": "https://github.com/sjr666666/ai-elderly-health-assistant/pull/3"
   },
   {
    "repo": "Snailclimb/interview-guide",
@@ -71,8 +68,7 @@
    "additions": 3205,
    "deletions": 29,
    "changed_files": 43,
-   "url": "https://github.com/Snailclimb/interview-guide/pull/50",
-   "hours": 100.75
+   "url": "https://github.com/Snailclimb/interview-guide/pull/50"
   },
   {
    "repo": "helsome/folio",
@@ -89,8 +85,7 @@
    "additions": 233,
    "deletions": 0,
    "changed_files": 4,
-   "url": "https://github.com/helsome/folio/pull/41",
-   "hours": 167.45
+   "url": "https://github.com/helsome/folio/pull/41"
   },
   {
    "repo": "helsome/folio",
@@ -107,8 +102,7 @@
    "additions": 437,
    "deletions": 0,
    "changed_files": 7,
-   "url": "https://github.com/helsome/folio/pull/42",
-   "hours": 167.32
+   "url": "https://github.com/helsome/folio/pull/42"
   },
   {
    "repo": "helsome/folio",
@@ -125,8 +119,7 @@
    "additions": 1459,
    "deletions": 23,
    "changed_files": 24,
-   "url": "https://github.com/helsome/folio/pull/43",
-   "hours": 167.19
+   "url": "https://github.com/helsome/folio/pull/43"
   },
   {
    "repo": "helsome/folio",
@@ -143,8 +136,7 @@
    "additions": 1886,
    "deletions": 23,
    "changed_files": 27,
-   "url": "https://github.com/helsome/folio/pull/76",
-   "hours": 161.82
+   "url": "https://github.com/helsome/folio/pull/76"
   },
   {
    "repo": "modelcontextprotocol/typescript-sdk",
@@ -161,8 +153,7 @@
    "additions": 43,
    "deletions": 9,
    "changed_files": 1,
-   "url": "https://github.com/modelcontextprotocol/typescript-sdk/pull/2847",
-   "hours": null
+   "url": "https://github.com/modelcontextprotocol/typescript-sdk/pull/2847"
   },
   {
    "repo": "freeCodeCamp/freeCodeCamp",
@@ -179,8 +170,7 @@
    "additions": 4,
    "deletions": 4,
    "changed_files": 1,
-   "url": "https://github.com/freeCodeCamp/freeCodeCamp/pull/70326",
-   "hours": 0.24
+   "url": "https://github.com/freeCodeCamp/freeCodeCamp/pull/70326"
   },
   {
    "repo": "excalidraw/excalidraw",
@@ -189,7 +179,7 @@
    "number": 12159,
    "title": "fix(collab): broadcast canceled multi-point arrows as deleted",
    "status": "open",
-   "stars": 133339,
+   "stars": 133342,
    "created": "2026-09-24T03:48:36Z",
    "merged_at": null,
    "merged_date": "",
@@ -197,8 +187,7 @@
    "additions": 64,
    "deletions": 8,
    "changed_files": 3,
-   "url": "https://github.com/excalidraw/excalidraw/pull/12159",
-   "hours": null
+   "url": "https://github.com/excalidraw/excalidraw/pull/12159"
   },
   {
    "repo": "vitest-dev/vitest",
@@ -207,7 +196,7 @@
    "number": 11352,
    "title": "fix(browser): only rewrite Vue dependencies when Vue test utils is installed (fix #11177)",
    "status": "open",
-   "stars": 17176,
+   "stars": 17177,
    "created": "2026-09-24T15:19:57Z",
    "merged_at": null,
    "merged_date": "",
@@ -215,8 +204,7 @@
    "additions": 22,
    "deletions": 2,
    "changed_files": 2,
-   "url": "https://github.com/vitest-dev/vitest/pull/11352",
-   "hours": null
+   "url": "https://github.com/vitest-dev/vitest/pull/11352"
   },
   {
    "repo": "huggingface/smolagents",
@@ -225,7 +213,7 @@
    "number": 2855,
    "title": "Fix CallbackRegistry TypeError for callbacks with flexible signatures",
    "status": "open",
-   "stars": 29614,
+   "stars": 29615,
    "created": "2026-09-26T15:12:15Z",
    "merged_at": null,
    "merged_date": "",
@@ -233,8 +221,7 @@
    "additions": 57,
    "deletions": 4,
    "changed_files": 2,
-   "url": "https://github.com/huggingface/smolagents/pull/2855",
-   "hours": null
+   "url": "https://github.com/huggingface/smolagents/pull/2855"
   },
   {
    "repo": "bytedance/deer-flow",
@@ -251,8 +238,7 @@
    "additions": 338,
    "deletions": 18,
    "changed_files": 3,
-   "url": "https://github.com/bytedance/deer-flow/pull/5974",
-   "hours": null
+   "url": "https://github.com/bytedance/deer-flow/pull/5974"
   },
   {
    "repo": "bytedance/deer-flow",
@@ -269,8 +255,7 @@
    "additions": 28,
    "deletions": 28,
    "changed_files": 2,
-   "url": "https://github.com/bytedance/deer-flow/pull/6005",
-   "hours": 2.13
+   "url": "https://github.com/bytedance/deer-flow/pull/6005"
   },
   {
    "repo": "bytedance/deer-flow",
@@ -287,8 +272,7 @@
    "additions": 28,
    "deletions": 28,
    "changed_files": 2,
-   "url": "https://github.com/bytedance/deer-flow/pull/6049",
-   "hours": 18.59
+   "url": "https://github.com/bytedance/deer-flow/pull/6049"
   },
   {
    "repo": "bytedance/deer-flow",
@@ -305,8 +289,7 @@
    "additions": 16,
    "deletions": 0,
    "changed_files": 1,
-   "url": "https://github.com/bytedance/deer-flow/pull/6129",
-   "hours": 6.19
+   "url": "https://github.com/bytedance/deer-flow/pull/6129"
   },
   {
    "repo": "bytedance/deer-flow",
@@ -323,8 +306,24 @@
    "additions": 4,
    "deletions": 0,
    "changed_files": 1,
-   "url": "https://github.com/bytedance/deer-flow/pull/6137",
-   "hours": 0.08
+   "url": "https://github.com/bytedance/deer-flow/pull/6137"
+  },
+  {
+   "repo": "langgenius/dify-plugins",
+   "owner": "langgenius",
+   "name": "dify-plugins",
+   "number": 3199,
+   "title": "feat: add dingtalk_trigger 0.0.1",
+   "status": "open",
+   "stars": 555,
+   "created": "2026-10-01T07:15:01Z",
+   "merged_at": null,
+   "merged_date": "",
+   "merged_year": "",
+   "additions": 0,
+   "deletions": 0,
+   "changed_files": 1,
+   "url": "https://github.com/langgenius/dify-plugins/pull/3199"
   }
  ]
 }
