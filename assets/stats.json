@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-10T05:20:09Z",
+ "generated_at": "2026-10-10T05:22:39Z",
  "user": "sjr666666",
  "prs": [
   {
@@ -145,7 +145,7 @@
    "number": 2847,
    "title": "test(node): handle SSE responses split across chunks",
    "status": "open",
-   "stars": 13542,
+   "stars": 13541,
    "created": "2026-09-23T13:46:59Z",
    "merged_at": null,
    "merged_date": "",
@@ -179,7 +179,7 @@
    "number": 12159,
    "title": "fix(collab): broadcast canceled multi-point arrows as deleted",
    "status": "closed",
-   "stars": 133571,
+   "stars": 133570,
    "created": "2026-09-24T03:48:36Z",
    "merged_at": null,
    "merged_date": "",
