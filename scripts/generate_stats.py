@@ -7,9 +7,10 @@ Merged PR Observatory — 静态资源生成器（极简版）
 （README 用 <picture> + prefers-color-scheme 按 GitHub 主题自动切换），
 并把一行统计小字回写 README.md 的标记区间。
 
-设计原则（用户反馈驱动，2026-10-01 二次精简）：
+设计原则（用户反馈驱动：2026-10-01 二次精简，2026-10-10 补 PR 计数）：
 - 一个焦点数字（已合并 PR 总数）+ 一条支撑链：每个上游仓库一行，
-  只显示**仓库名 + ★ 星级**。行数 / 文件数 / PR 明细一律不上卡片。
+  显示**仓库名 + 该仓库已合并 PR 数 + ★ 星级**。PR 标题 / 行数 / 文件数 /
+  合并日期一律不上卡片（改按仓库聚合，避免退化成明细表）。
 - 排序按仓库含金量：上游仓库以 stars 降序（公开可验证、每日随数据刷新），
   同仓库内按 PR 号；自有项目不进列表（已在「代表项目」段展示）。
 - 贡献贪吃蛇（Platane/snk）由 .github/workflows/snake.yml 独立生成，
@@ -164,9 +165,10 @@ def tx(x, y, s, size=12, fill="#000", weight="normal", anchor="start",
 
 # ---------------------------------------------------------------- 卡片（极简）
 def card_merged(prs: list[dict], C: dict) -> str:
-    """962 宽、高度自适应：焦点数字 + 每上游仓库一行（仓库名 + ★）。"""
+    """962 宽、高度自适应：焦点数字 + 每上游仓库一行（仓库名 + PR 数 + ★）。"""
     W = 962
     L, R = 40, W - 40
+    PRC = R - 152          # PR 计数列的右基线（与最右的 ★ 列留出固定间距）
 
     merged = [p for p in prs if p["status"] == "merged"]
     upstream = [p for p in merged if p["owner"] != USER]
@@ -179,7 +181,9 @@ def card_merged(prs: list[dict], C: dict) -> str:
     groups = dict(sorted(
         groups.items(),
         key=lambda kv: (-max(p.get("stars") or 0 for p in kv[1]), -len(kv[1]))))
-    shown = list(groups.items())[:6]
+    TOP = 6
+    shown = list(groups.items())[:TOP]
+    rest = len(groups) - len(shown)
 
     b: list[str] = []
     # 眉头
@@ -190,21 +194,25 @@ def card_merged(prs: list[dict], C: dict) -> str:
     # 焦点数字
     n = str(len(merged))
     b.append(tx(L - 5, 146, n, 84, C["text"], "700", family=MONO, ls="-3.5"))
-    b.append(tx(L + 52 * len(n) + 16, 146, "个 PR 已合并进开源项目", 20, C["text"], "600", ls="-0.2"))
+    b.append(tx(L + 52 * len(n) + 16, 146, "个 PR 已合并", 20, C["text"], "600", ls="-0.2"))
     b.append(tx(L, 174, f"{len(upstream)} 个提给他人仓库 · {len(own)} 个自有项目",
                 14.5, C["text2"], "500"))
     b.append(f'<line x1="{L}" y1="202" x2="{R}" y2="202" stroke="{C["hair"]}"/>')
 
-    # 仓库行：名称 + 星级，仅此两样（列表主体，字号压过副标题一级）
+    # 仓库行：仓库名 + 该仓库已合并 PR 数 + 星级（列表主体，字号压过副标题一级）
     y = 238
     for repo, items in shown:
         stars = max(p.get("stars") or 0 for p in items)
         b.append(tx(L, y, repo, 18, C["text"], "700", family=MONO, ls="0.2"))
-        b.append(tx(R, y, f"★ {fmt_stars(stars)}", 16, C["text"], "600", "end", MONO))
+        b.append(tx(PRC, y, f"{len(items)} 个 PR", 15.5, C["text"], "700", "end"))
+        b.append(tx(R, y, f"★ {fmt_stars(stars)}", 16, C["text2"], "600", "end", MONO))
+        y += 42
+    if rest > 0:
+        b.append(tx(L, y, f"… 另有 {rest} 个仓库已合并 PR", 15, C["text3"], "500"))
         y += 42
 
     H = int(y + 26 + 44)
-    stamp = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
+    stamp = datetime.now(TZ8).strftime("%Y-%m-%d %H:%M (UTC+8)")
 
     head = [f'<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" '
             f'viewBox="0 0 {W} {H}" role="img" aria-label="已合并的 Pull Request">',
@@ -223,10 +231,13 @@ def card_merged(prs: list[dict], C: dict) -> str:
 def sync(md: str, prs: list[dict]) -> str:
     """只同步徽章数字与一行统计小字；明细表格已按 2026-10-01 反馈移除。"""
     merged = [p for p in prs if p["status"] == "merged"]
+    upstream = [p for p in merged if p["owner"] != USER]
+    own = [p for p in merged if p["owner"] == USER]
     md = re.sub(r"(badge/Merged%20PRs-)\d+(-)", rf"\g<1>{len(merged)}\g<2>", md)
 
     lines = ["<!-- STATS:BEGIN -->",
-             f"**{len(merged)}** 个 PR 已被合并 · 数据由 "
+             f"**{len(merged)}** 个 PR 已被合并"
+             f"（{len(upstream)} 个提给他人仓库 · {len(own)} 个自有项目）· 数据由 "
              "[`generate_stats.py`](./scripts/generate_stats.py) 每日直连 GitHub API 刷新",
              "<!-- STATS:END -->"]
     return re.sub(r"<!-- STATS:BEGIN -->.*?<!-- STATS:END -->", "\n".join(lines), md, flags=re.S)
